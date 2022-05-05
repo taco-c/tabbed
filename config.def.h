@@ -14,14 +14,15 @@ static const char titletrim[]   = "...";
 static const int  tabwidth      = 200;
 static const Bool foreground    = True;
 static       Bool urgentswitch  = False;
+static const int  barHeight     = 32;
 
 /*
  * Where to place a new tab when it is opened. When npisrelative is True,
  * then the current position is changed + newposition. If npisrelative
  * is False, then newposition is an absolute position.
  */
-static int  newposition   = 0;
-static Bool npisrelative  = False;
+static int  newposition   = 1;
+static Bool npisrelative  = True;
 
 #define SETPROP(p) { \
         .v = (char *[]){ "/bin/sh", "-c", \
@@ -36,8 +37,10 @@ static Bool npisrelative  = False;
 #define MODKEY ControlMask
 static Key keys[] = {
 	/* modifier             key        function     argument */
-	{ MODKEY|ShiftMask,     XK_Return, focusonce,   { 0 } },
-	{ MODKEY|ShiftMask,     XK_Return, spawn,       { 0 } },
+	//{ MODKEY|ShiftMask,     XK_Return, focusonce,   { 0 } },
+	{ MODKEY,               XK_t,      focusonce,   { 0 } },
+	//{ MODKEY|ShiftMask,     XK_Return, spawn,       { 0 } },
+	{ MODKEY,               XK_t,      spawn,       { 0 } },
 
 	{ MODKEY|ShiftMask,     XK_l,      rotate,      { .i = +1 } },
 	{ MODKEY|ShiftMask,     XK_h,      rotate,      { .i = -1 } },
